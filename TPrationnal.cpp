@@ -1,7 +1,15 @@
 #include <iostream>
 class Rational {
+
+    // vr: c++ ne reconnaît pas la fonction operator+ que tu définis plus bas parce que les arguments sont passés const:
+    // il faut que le prototype de la fonction (type de retour et liste des arguments) soit exactement le même que dans la définition
     friend Rational operator+ (const Rational& r1, const Rational& r2) ;//déclare friend - elle choisit ses amis - fonctions copines
-    friend operator<< (std::ostream& os, const Rational& r) ;
+    
+    // vr: idem c++ ne reconnaît pas la fonction operator<< définie plus bas il manque le type de retour
+//    friend operator<< (std::ostream& os, const Rational& r) ;
+    friend std::ostream& operator<< (std::ostream& os, const Rational& r) ;
+    // elle retournera une référence vers l'ostream passée en argument (et qui a été augmentée de ce que tu écris dans la fonction)
+    
     private:
         int num;
         int den;
@@ -18,12 +26,16 @@ class Rational {
     float eval() {
         return(static_cast<float>(num)/den);
         }
+
     };
+// Rational operator+ (Rational& r1, Rational& r2){ //on veut redéfinir le + : surcharge des opérateurs pour un type
+//     return Rational ((r1.num*r2.den + r2.num*r1.den)/(r1.den + r2.den));
+// }
 
-Rational operator+ (Rational& r1, Rational& r2){ //on veut redéfinir le + : surcharge des opérateurs pour un type
-    return Rational ((r1.num*r2.den + r2.num*r1.den)/(r1.den + r2.den));
+// vr: je modifie
+Rational operator+ (const Rational& r1, const Rational& r2){ //on veut redéfinir le + : surcharge des opérateurs pour un type
+    return Rational ((r1.num*r2.den + r2.num*r1.den), (r1.den + r2.den));
 }
-
 
 std::ostream& operator<< (std::ostream& os, const Rational& r) {
     os<<'[' <<r.num/r.den<<']';
@@ -37,9 +49,9 @@ int main() {
     r1.print();
     std::cout << r2.eval() << std::endl;
     r3.print();
-    Rational& rr1 = r1;
+    Rational& rr1 = r1; //référence de l'objet (donc va simplement regarder l'objet)
     Rational& rr2 = r2;
-    std::cout << operator+ (rr1, rr2) << std::endl;
+    std::cout << (r3 + r2) << std::endl;
     return 0;
 }
 
