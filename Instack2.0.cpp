@@ -9,22 +9,34 @@ class IntStack
 { // class c'est private par défaut
     int n;
     int size;
-    int* pile;
+    int *pile;
     // pile[0] - va sur le premier élément du tableau
-    //delete [] pile;
+    // delete [] pile;
 
 public:
-// besoin d'un constructeur où on passe une valeur s en argument - il nous faut une troisième zone mémoire pour que le tableau reste formé même après être sorti de la fonction
-    IntStack (int s) : n{0}, size{s}
-    { 
-        if (size <= 0){
+    // besoin d'un constructeur où on passe une valeur s en argument - il nous faut une troisième zone mémoire pour que le tableau reste formé même après être sorti de la fonction
+
+    // constructeur de copie (si on ne le met pas il le fait par défaut, mais viollement) //i.n c'est l'argument du nb d'éléments de ma pile i
+    IntStack(const IntStack &r) : n{r.n}, size{r.size}
+    {
+        pile = new int[size];
+        for (int i = 0; i < n; i++)
+        {
+            pile[i] = r.pile[i];
+        }
+    };
+    IntStack(int s) : n{0}, size{s}
+    {
+        if (size <= 0)
+        {
             exit(EXIT_FAILURE);
         };
         pile = new int[size];
-    } ;
-//il va falloit créer un destructeur pour détruire la zone mémoire de ma pile dans la mémoire dynamique (heap)
-    ~IntStack() { //création du destructeur 
-        delete [] pile;
+    };
+    // il va falloit créer un destructeur pour détruire la zone mémoire de ma pile dans la mémoire dynamique (heap)
+    ~IntStack()
+    { // création du destructeur
+        delete[] pile;
     };
     void push(int e)
     {
@@ -118,14 +130,17 @@ int main()
 {
     int size;
     std::cout << "Entrez la taille de votre pile" << std::endl;
-    std::cin >> size; //cin entrée standard
-    IntStack s1 (size);
+    std::cin >> size; // cin entrée standard
+    IntStack s1(size);
     s1.print(); // affichera [[
     s1.push(1);
     s1.push(2);
     s1.push(3);
+    IntStack j (s1);
     s1.print();                         // affichera [1 2 3 ]
     std::cout << s1.pop() << std::endl; // affichera 3
     s1.print();                         // affichera [1 2 ]
+    j.push(4);
+    j.print();
     return 0;
 }
