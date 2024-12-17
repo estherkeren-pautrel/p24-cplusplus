@@ -22,6 +22,10 @@ public:
         };
         pile = new int[size];
     } ;
+//il va falloit créer un destructeur pour détruire la zone mémoire de ma pile dans la mémoire dynamique (heap)
+    ~IntStack() { //création du destructeur 
+        delete [] pile;
+    };
     void push(int e)
     {
         // if (is_full() == 1)
