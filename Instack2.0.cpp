@@ -15,7 +15,12 @@ class IntStack
 
 public:
     // besoin d'un constructeur où on passe une valeur s en argument - il nous faut une troisième zone mémoire pour que le tableau reste formé même après être sorti de la fonction
-
+    //on construit opérateur IntStack
+    IntStack& operator= (const IntStack& r){
+        //son tableau se fait tuer
+        //on réaloue un nouveau tableau
+        //en cours de création....
+    }
     // constructeur de copie (si on ne le met pas il le fait par défaut, mais viollement) //i.n c'est l'argument du nb d'éléments de ma pile i
     IntStack(const IntStack &r) : n{r.n}, size{r.size}
     {
