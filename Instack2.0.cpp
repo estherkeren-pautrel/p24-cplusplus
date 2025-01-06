@@ -15,13 +15,22 @@ class IntStack
 
 public:
     // besoin d'un constructeur où on passe une valeur s en argument - il nous faut une troisième zone mémoire pour que le tableau reste formé même après être sorti de la fonction
-    //on construit opérateur IntStack
-    IntStack& operator= (const IntStack& r){
-        //son tableau se fait tuer
-        //on réaloue un nouveau tableau
-        //en cours de création....
+    // on construit opérateur IntStack
+    inline IntStack& operator=(const IntStack &r)
+    {
+        if (this != &r)
+        {
+            size = r.size;
+            delete[] pile;        // on efface l'ancien tableau
+            pile = new int[size]; // on réaloue un nouveau tableau
+            for (int i = 0; i < n; ++i)
+            {
+                pile[i] = r.pile[i];
+            }
+        }
+        return *this;
     }
-    // constructeur de copie (si on ne le met pas il le fait par défaut, mais viollement) //i.n c'est l'argument du nb d'éléments de ma pile i
+    // constructeur de copie (si on ne le met pas il le fait par défaut, mais violemment) //i.e c'est l'argument du nb d'éléments de ma pile i
     IntStack(const IntStack &r) : n{r.n}, size{r.size}
     {
         pile = new int[size];
@@ -141,11 +150,13 @@ int main()
     s1.push(1);
     s1.push(2);
     s1.push(3);
-    IntStack j (s1);
+    IntStack j(s1);
     s1.print();                         // affichera [1 2 3 ]
     std::cout << s1.pop() << std::endl; // affichera 3
     s1.print();                         // affichera [1 2 ]
     j.push(4);
+    IntStack r = j;
+    r.print();
     j.print();
     return 0;
 }
