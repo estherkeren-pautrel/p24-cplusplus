@@ -8,7 +8,7 @@
 
 float pi = 3.14
 
-    class forme()
+    class forme
 {
     int x;
     int y;
@@ -21,20 +21,9 @@ public:
         y = y + dy;
         return 0;
     };
-    // find_at_position(int xi, int yi, std::vector<forme *> v) //mettre en variable globale avec un bool de is_at_position comme méthodes dans ma classe
-    {
-        for (auto &e : v)
-        {
-            if (((e->x) == xi) and ((e->y) == yi))
-            {
-                t = (e -> type());
-                return t;
-            };
-            else
-            {
-                std::cout << "Pas de forme trouvée à cette position"
-            };
-        };
+    bool is_at_position(int xi, int yi) {
+        return ((xi == x) and (yi == y))
+
     };
 };
 
@@ -72,14 +61,27 @@ public:
     }
 }
 
-int main
+*forme find_at_position(int xi, int yi, std::vector<*forme> v)
+{
+    for (auto &e : v)
+    {
+        if (is_at_position(xi, yi))
+        {
+            return e;
+        };
+    };
+    return 0;
+}
+
+int main()
 {
     circle c{3, 4, 'b', 5};
     rectangle r{2, 7, 'r', 4, 7};
     std::vector<forme *> v;
     v.pushback(&c);
     v.pushback(&r);
-    // forme * s = find_at_position(2, 3, v);
-    // s -> area();
+    forme *s = find_at_position(2, 3, v);
+    s->area();
+    std::cout << s;
     return 0;
 }
