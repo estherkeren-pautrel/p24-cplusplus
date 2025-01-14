@@ -84,7 +84,7 @@ forme *find_at_position(int xi, int yi, std::vector<forme *> &v)
         };
     };
     std::cout << "Pas de forme trouvée à cette position." << std::endl;
-    exit(EXIT_FAILURE);
+    return nullptr;//on ne met que return 0 ou return nullptr
 };
 
 int main()
