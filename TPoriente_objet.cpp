@@ -74,7 +74,7 @@ public:
     };
 };
 
-forme *find_at_position(int xi, int yi, std::vector<forme *> v)
+forme *find_at_position(int xi, int yi, std::vector<forme *> &v)
 {
     for (auto &e : v)
     {
@@ -107,3 +107,4 @@ int main()
 //type adresse shape*
 //virtual faut que le type doit exact, ie que ce soit le même type entre les deux méthodes dans la classe parent et la classe héritée 
 //overriding de mettre area dans shape
+//override / final... 
