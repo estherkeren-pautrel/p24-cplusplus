@@ -14,20 +14,6 @@ class IntStack
     // delete [] pile;
 
 public:
-    IntStack& operator=(const IntStack &r)
-    {
-        if (this != &r)
-        {
-            size = r.size;
-            delete[] pile;        // on efface l'ancien tableau
-            pile = new int[size]; // on réaloue un nouveau tableau
-            for (int i = 0; i < n; ++i)
-            {
-                pile[i] = r.pile[i];
-            }
-        }
-        return *this;
-    };
     IntStack(const IntStack &r) : n{r.n}, size{r.size}
     {
         pile = new int[size];
@@ -44,26 +30,46 @@ public:
         };
         pile = new int[size];
     };
+    IntStack& operator=(const IntStack &r)
+    {
+    };
+    ~IntStack()
+    { 
+    };
     void push(int e)
     {
-    }
+    };
     int get_top() const 
     {
-    }
+    };
     int pop() 
     {
-    }
+    };
     bool is_empty() const 
     {
-    }
+    };
     bool is_full() const 
     {
-    }
+    };
     void print() const 
     {
-    }
+    };
 };
 
+inline IntStack& IntStack :: operator=(const IntStack &r)
+    {
+        if (this != &r)
+        {
+            size = r.size;
+            delete[] pile;        // on efface l'ancien tableau
+            pile = new int[size]; // on réaloue un nouveau tableau
+            for (int i = 0; i < n; ++i)
+            {
+                pile[i] = r.pile[i];
+            }
+        }
+        return *this;
+    };
 
 inline IntStack :: ~IntStack()
     { // création du destructeur
