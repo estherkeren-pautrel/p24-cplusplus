@@ -69,12 +69,12 @@ inline IntStack& IntStack :: operator=(const IntStack &r)
             }
         }
         return *this;
-    };
+    }
 
 inline IntStack :: ~IntStack()
     { // création du destructeur
         delete[] pile;
-    };
+    }
 
 inline void IntStack :: push(int e)
     {
@@ -88,7 +88,7 @@ inline void IntStack :: push(int e)
         ++n;
         // cette fonction ajoute l'entier e dans la pile
         // votre code ici
-    };
+    }
 
 inline int IntStack :: get_top() const // vr: const puisqu'elle ne modifie pas l'objet sur lequel elle est appelée
     // on veut pouvoir l'appeler sur des objets constants
@@ -104,7 +104,7 @@ inline int IntStack :: get_top() const // vr: const puisqu'elle ne modifie pas l
         return pile[n - 1];
         // cette fonction retourne le dernier entier empilé
         // votre code ici
-    };
+    }
 
 inline int IntStack :: pop() // vr: pas de const puisque pop modifie la pile --n
     {
@@ -118,7 +118,7 @@ inline int IntStack :: pop() // vr: pas de const puisque pop modifie la pile --n
         // cette fonction retourne le dernier entier empilé
         // et supprime cet entier de la pile
         // votre code ici
-    };
+    }
 
 inline  bool IntStack :: is_empty() const // vr: const puisqu'elle ne modifie pas l'objet sur lequel elle est appelée
     // on veut pouvoir l'appeler sur des objets constants
@@ -130,7 +130,7 @@ inline  bool IntStack :: is_empty() const // vr: const puisqu'elle ne modifie pa
         // }; // cette fonction teste si la pile est vide
         // // votre code ici
         // return 0;
-    };
+    }
 
 inline  bool IntStack :: is_full() const // vr: idem
     {
@@ -143,7 +143,7 @@ inline  bool IntStack :: is_full() const // vr: idem
         // il y a SIZE entiers dans la pile
         // votre code ici
         return 0;
-    };
+    }
 
 inline void IntStack :: print() const // vr: idem (const puisqu'elle ne modifie pas this)
     {
@@ -157,7 +157,7 @@ inline void IntStack :: print() const // vr: idem (const puisqu'elle ne modifie 
         // [1 2 3 [ pour dire que 3 entiers sont dans la pile
         // le dernier empilé est 3
         // votre code ici
-    };
+    }
 
 int main()
 {
