@@ -33,30 +33,14 @@ public:
         };
         pile = new int[size];
     };
-    IntStack& operator=(const IntStack &r)
-    {
-    };
-    ~IntStack()
-    { 
-    };
-    void push(int e)
-    {
-    };
-    int get_top() const 
-    {
-    };
-    int pop() 
-    {
-    };
-    bool is_empty() const 
-    {
-    };
-    bool is_full() const 
-    {
-    };
-    void print() const 
-    {
-    };
+    IntStack& operator=(const IntStack &r);
+    ~IntStack();
+    void push(int e);
+    int get_top() const ;
+    int pop() ;
+    bool is_empty() const ;
+    bool is_full() const ;
+    void print() const ;
 };
 
 inline IntStack& IntStack :: operator=(const IntStack &r)
