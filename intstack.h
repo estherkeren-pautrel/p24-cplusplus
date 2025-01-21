@@ -3,9 +3,12 @@
 //il en fait un main.o
 
 #pragma once
+
 #include <iostream>
 #include <stdexcept>
-#include <cstdlib> //exit et abort sont dans cette librairie (exit : terminaison normale du code) (abort : on tue le process de manière violente)
+#include <cstdlib>
+
+namespace Pautrel { //exit et abort sont dans cette librairie (exit : terminaison normale du code) (abort : on tue le process de manière violente)
 
 // grosse mémoire : heap le tas - C++ gère la pile d'exécution
 // on demande un morceau de mémoire (dans heap) avec new et on le tue avec delete
@@ -137,3 +140,4 @@ public:
         // votre code ici
     }
 };
+}
